@@ -1,13 +1,12 @@
 %%算法主体
-```
+
 clc,clear;
 %1.读入
 [fn,pn]=uigetfile('*.tif','chose image');
 I=imread([pn,fn]);
 
-```
 %2.判断
-``` 
+
  %2.1 预设数据
 [ROW,COL]=size(I);	%获取行列值
 test=zeros(ROW,COL);  %创建三个0矩阵
@@ -42,18 +41,3 @@ else if(test==median_test)
 end
 figure,plot(I);	%显示直方图
 figure,imhist(I);	
-```    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
