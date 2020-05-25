@@ -1,5 +1,5 @@
 %%算法主体
-
+```
 clc,clear;
 %1.读入
 [fn,pn]=uigetfile('*.tif','chose image');
@@ -41,3 +41,4 @@ else if(test==median_test)
 end
 figure,plot(I);	%显示直方图
 figure,imhist(I);	
+```
