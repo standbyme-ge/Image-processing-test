@@ -20,7 +20,7 @@ FileList= dir('C:\Users\Administrator\Desktop\fil - 副本\*tif');
 TF = zeros(1,FM);%记录0比例率
 
 %2.循环体
-for Fi=1:FM
+for Fi=2:FM %第一张图明显为篡改图。从2开始
 imx = strcat('C:\Users\Administrator\Desktop\fil - 副本\',FileList(Fi).name);
 I=imread(imx);
 %2.1 预设数据
@@ -67,9 +67,10 @@ end
 
 %3.判断中值图像个数
 original=0;
-for i=1:FM
+for i=2:FM
    if(TF(i)>0.55)   %0.5 为59,0.51为58,0.55为51
        original=original+1;
+       imwrite(imx,strcat('篡改-',FileList(Fi).name)); %修改图名
    end
 end
 ```
