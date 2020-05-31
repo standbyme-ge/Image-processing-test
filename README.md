@@ -9,6 +9,9 @@
 %%%%%%%%%%%%%%%%%%%%%%%
 大概的研究方向：图像篡改检测。
 %%%%%%%%%%%%%%%%%%%%%%%
+1. Yuan H D. Blind forensics of median filtering in digital images. IEEE Trans Inf Foren Sec, 2011, 6: 1335–1345
+2. Chen C L, Ni J Q, Huang R B, et al. Blind median filtering detection using statistics in difference domain. In:
+Information Hiding. Berlin: Springer, 2012. 1–15
 
 ```
 知识储备：
