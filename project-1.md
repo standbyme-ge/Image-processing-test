@@ -9,6 +9,7 @@ pp. 1-12, (2010)（重点！！！）
 Multimedia and Expo (ICME), pp. 89-94, (2010)
 4. Yuan, H.: Blind Forensics of Median Filtering in Digital Images. In: IEEE Transactions on Information Forensics and Security, vol. 6, no. 4, pp. 1335-1345, (2011)
 ```
+```
 知识储备：
 
 矩阵运算代替for循环：
