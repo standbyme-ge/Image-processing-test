@@ -142,3 +142,55 @@ for i=2:FM
    end
 end
 ```
+
+```
+%改进3次
+横向像素差，再提取水平差比例进行傅里叶变换，取均值作比较
+
+%改进3次
+clc,clear;
+
+%1.加载
+FileList= dir('C:\Users\Administrator\Desktop\fil - 副本\*tif');
+[FM,FN] = size(FileList);
+saveF0 = zeros(1,FM);%记录0比例率
+
+%2.循环体
+for Fi=2:FM
+imx = strcat('C:\Users\Administrator\Desktop\fil - 副本\',FileList(Fi).name);
+I=double(imread(imx));
+
+%2.1 预设数据
+[m,n] = size(I); %获取长宽大小
+D_H = I(:,1:n-1)- I(:,2:n);%保存每行横向像素差
+h0 = sum(D_H==0)/(n-1);%每行水平差比例
+F0 = abs(fft(h0));%傅里叶变换
+
+%saveF0(Fi)=mean(F0); %~1.2~0.75~
+for mm = 31:m/2+1 %31开始，搜索峰值。~1.3~0.95~:50:25:25
+    %f0大于【均值f0(左右10单位)+阈值】，且f0为左右中最大值
+    if ((F0(mm) > mean(F0(mm-10:mm+10))) && F0(mm)==max(F0(mm-10:mm+10)))
+       saveF0(Fi) = F0(mm); 
+       break;
+    end
+end
+
+end
+%%
+clc
+original=0;
+medfilt=0;
+average=0;
+for i=2:FM
+    if(saveF0(i)>1.3)
+        average=average+1;
+    else
+        if(saveF0(i)<0.95)
+            original=original+1;
+        else
+            medfilt=medfilt+1;
+        end
+    end
+end
+plot(saveF0);
+```
