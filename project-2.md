@@ -1,3 +1,5 @@
+```
+论文提示：
 (1):
 为了测试对比度增强检测算法，使用幂定律变换
 
@@ -19,7 +21,8 @@ T（x）= 255(x/ 255)^γ          （11）
 %imwrite(I_CE,strcat('对比度0.9-',fn));%单文件保存测试
 %figure,subplot(2,1,1); imshow(I_CE);title('0.9'); 
 %subplot(2,1,2),imhist(I_CE);  %显示对比增强处理后的图与直方图
-
+```
+```
 clc,clear,close all
 
 %%% 一、对比度增强处理 %%%
@@ -96,7 +99,11 @@ else
     I_original=I_origin+1;
 end
 end
+
 I_original,I_enhance
 
-Pd=I_enhance/50  %正确分类已篡改个数
-Pfa=abs(50-I_original)/50  %不正确分类未篡改个数
+%正确分类已篡改个数
+Pd=I_enhance/50  
+%不正确分类未篡改个数
+Pfa=abs(50-I_original)/50  
+```
