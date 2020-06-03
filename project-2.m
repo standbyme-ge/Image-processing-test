@@ -62,3 +62,39 @@ imwrite(I_CE2,strcat('对比度1.2-',FileList(Fi).name));  %改名存储
 end
 
 %%%篡改检测%%%
+%%
+[fn,pn]=uigetfile('*tif');
+I=imread([pn,fn]);
+[Iy,Ix]=size(I);
+figure,subplot(2,1,1);imshow(I);
+subplot(2,1,2),imhist(I);
+%%
+h=imhist(I);
+[y,x]=size(h);
+p=zeros(y,x);
+for i=1:y
+if(h(i)<=4)
+    p(i)=0.5-0.5*cos((h(i)*pi)/4);
+else
+    if(h(i)>=252)
+        p(i)=0.5+0.5*cos((pi*(h(i)-252))/4);
+    else
+        p(i)=1;
+    end
+end
+end
+g=p.*h;
+%%
+N=Iy*Ix;
+G=fft(g);
+BT=zeros(y,x);
+C=pi*7/8;
+for i=1:y
+    if(abs(G(i))>=C)
+        BT(i)=1;
+    else
+        BT(i)=0;
+    end
+end
+F=(1/N)*abs(BT.*G);
+figure,plot(F);
