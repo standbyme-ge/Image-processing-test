@@ -103,7 +103,7 @@ end
 I_original,I_enhance
 
 %正确分类已篡改个数
-Pd=I_enhance/50  
+Pd=I_enhance/(FM-50)
 %不正确分类未篡改个数
 Pfa=abs(50-I_original)/50  
 ```
