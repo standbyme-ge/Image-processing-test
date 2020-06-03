@@ -96,7 +96,7 @@ F=(1/N)*sum(abs(BT.*G));  %公式（3） 加权度量F
 if(F>threshold)  %判断F与阈值大小以断定是否进行对比度增强。
     I_enhance=I_enhance+1;
 else
-    I_original=I_origin+1;
+    I_original=I_original+1;
 end
 end
 
