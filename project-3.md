@@ -1,8 +1,17 @@
 ```
 clc,clear,close all
 %%
-[fn,pn]=uigetfile('*.tif','chose image');
-I=imread([pn,fn]);
+%[fn,pn]=uigetfile('*.tif','chose image');
+%I=imread([pn,fn]);
+
+FileList=dir('C:\Users\Administrator\Desktop\RStest\*tif');
+[FM,FN] = size(FileList);
+OR=0;RS=0;
+
+for Fi=1:FM
+
+imx = strcat('C:\Users\Administrator\Desktop\RStest\',FileList(Fi).name);
+I=imread(imx);
 [m,n]=size(I);
 %%
 alpha1=[-0.25,0.5,-0.25;0.5,0,0.5;-0.25,0.5,-0.25];
@@ -16,34 +25,35 @@ for i=2:m-1
     end
 end
 p=exp(-(abs(e).^2));
-imshow(I),figure,
-imshow(p);
+%imshow(I),figure,
+%imshow(p);
 F_p=log(abs(fftshift(fft2(p))));%除去低频区域
 [M, N] = size(F_p); 
 F_p(M/2-9:M/2+10,N/2-9:N/2+10)=0;
-figure,imshow(F_p,[]);
+%figure,imshow(F_p,[]);
 
 gamma = 2;%伽马变换 %F_p2=(255*(F_p/255)).^2
 F_p2= abs(fftshift(fft2(p)));
 [M, N] = size(F_p2); 
 F_p2(M/2-9:M/2+10,N/2-9:N/2+10)=0;
 F_p2=F_p2.^gamma;
-figure,imshow(F_p2,[]);%伽马变换就是通过改变它的对比度来实现突出数值大的点
+%figure,imshow(F_p2,[]);%伽马变换就是通过改变它的对比度来实现突出数值大的点
 %%
 F_p3=F_p2(1:M/2,N/2:end);
-rectangle('position',[N/2,1,N/2,M/2],'edgecolor','g');
+%rectangle('position',[N/2,1,N/2,M/2],'edgecolor','g');
 c=zeros(1,M/2);
 for k=1:M/2
 c(k)=sum(abs((F_p3(1:k)).^2))*(1.0/sum(sum(abs(F_p3).^2)));
 end 
 %F=find(max(c))
-figure,plot(c)
+%figure,plot(c)
 F_c=sum(c);
-OR=0;RS=0;
-if(F_c>0.1)
+
+if(F_c>0.2)
     OR=OR+1;
 else
     RS=RS+1;
 end
-F_c,OR,RS
+%F_c,OR,RS
+end
 ```
