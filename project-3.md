@@ -38,5 +38,12 @@ c(k)=sum(abs((F_p3(1:k)).^2))*(1.0/sum(sum(abs(F_p3).^2)));
 end 
 %F=find(max(c))
 figure,plot(c)
-sum(c)
+F_c=sum(c);
+OR=0;RS=0;
+if(F_c>0.1)
+    OR=OR+1;
+else
+    RS=RS+1;
+end
+F_c,OR,RS
 ```
