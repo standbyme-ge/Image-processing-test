@@ -49,7 +49,7 @@ end
 %figure,plot(c)
 F_c=sum(c);
 
-if(F_c>0.2)
+if(F_c>0.3)
     OR=OR+1;
 else
     RS=RS+1;
