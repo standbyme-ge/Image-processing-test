@@ -15,15 +15,17 @@ I=imread(imx);
 [m,n]=size(I);
 %%
 alpha1=[-0.25,0.5,-0.25;0.5,0,0.5;-0.25,0.5,-0.25];
-e=zeros(m-2,n-2);
-for i=2:m-1
-    for j=2:n-1
-        s=double([I(i-1,j-1),I(i-1,j),I(i-1,j+1);
-            I(i,j-1),I(i,j),I(i,j+1);
-            I(i+1,j-1),I(i+1,j),I(i+1,j+1)]);
-        e(i-1,j-1)=double(I(i,j))-sum(sum(alpha1.*s));
-    end
-end
+%e=zeros(m-2,n-2);
+%for i=2:m-1
+%    for j=2:n-1
+%        s=double([I(i-1,j-1),I(i-1,j),I(i-1,j+1);
+%            I(i,j-1),I(i,j),I(i,j+1);
+%            I(i+1,j-1),I(i+1,j),I(i+1,j+1)]);
+%        e(i-1,j-1)=double(I(i,j))-sum(sum(alpha1.*s));
+%    end
+%end
+g=imfilter(I,alpha1);
+e=double(I)-double(g);
 p=exp(-(abs(e).^2));
 %imshow(I),figure,
 %imshow(p);
