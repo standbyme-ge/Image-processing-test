@@ -29,3 +29,12 @@
           3.提供一份1-2页的文档，说明您对本文的理解。
           您不需要实现（4），而是使用类似dct2（）的函数。 希望您可以在36小时内完成。 关键是要理解所编码内容的物理含义。
 ```
+```
+项目5：
+这次我们回到中值滤波取证。
+    1. 在此前的工作中，我们实现了‘On Detection of Median Filtering in Digital Images’ 第三章的算法，现在我们继续实现其第四章算法。先自己尝试提取SPAM特征，如果有困难可以参考‘spam686.m’
+    2. 实现‘Robust Median Filtering Forensics Using An Autoregressive Model’ 里的算法，这是我们课题组代表性工作之一。同样先自己理解，有困难参考‘ar_flip_mfr.m’
+    3. 对比分析 这两种算法 以及我们之前实现的 用h_0/h_1特征的方法，在取证性能上的差异。
+    机器学习需要大量的图片来训练，我把完整的UCID数据库发给你，建议用00001-01000训练，剩下的做测试。争取在36小时内提交给我
+    SVM工具箱下载地址：https://www.csie.ntu.edu.tw/~cjlin/libsvm/
+```
