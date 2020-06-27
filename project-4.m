@@ -32,3 +32,12 @@ else
    % test_l(tt)=0;
 end
 end
+
+
+修改意见：
+Ij = double(imread(imx));
+dct_BlockbyBlock= blkproc (Ij,[8,8],'dct2(x)');
+Y11 = round(dct_BlockbyBlock(2:8:end,2:8:end));
+% 以下的20自己根据想观察的直方图范围设置，
+[N,X] = hist(Y11(:),0:20);
+figure,bar(0:20,N)
