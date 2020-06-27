@@ -194,3 +194,42 @@ for i=2:FM
 end
 plot(saveF0);
 ```
+#改进4次
+```
+clc,clear;
+
+%1.加载
+FileList= dir('C:\Users\Administrator\Desktop\classtify\*tif');
+[FM,FN] = size(FileList);
+saveF0 = zeros(1,FM);%记录0比例率
+tt=zeros(FM,1);
+%2.循环体
+for Fi=1:FM
+imx = strcat('C:\Users\Administrator\Desktop\classtify\',FileList(Fi).name);
+
+I=double(imread(imx));
+I2=medfilt2(I,[3 3],'symmetric');
+%2.1 预设数据
+[m,n] = size(I); %获取长宽大小
+D_H = I2- I;%保存每行横向像素差
+h0 = sum(D_H==0,2)/(n-1);%每行水平差比例
+H=h0/(m*n);
+saveF0(Fi)=sum(H);
+end
+%%
+clc
+original=0;
+medfilt=0;
+for i=1:FM
+        if(saveF0(i)<0.0012)
+            original=original+1;
+            tt(i)=1;
+        else
+            medfilt=medfilt+1;
+            tt(i)=0;
+        end
+end
+original
+medfilt
+length(find(tt(1:50)==0))
+```
