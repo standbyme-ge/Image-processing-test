@@ -1,16 +1,16 @@
 %{
 
-1.Ê¹ÓÃÌØÕ÷Ëã·¨ÌáÈ¡Ã¿ÕÅÌØÕ÷×é³ÉÊı×é
-2.Ê¹ÓÃÇø·ÖËã·¨ÎªÍ¼Ïñ½øĞĞÌí¼ÓÇø·Ö±êÇ©
-3.·ÖÀëÑµÁ·¼¯Óë²âÊÔ¼¯Êı¾İ
-4.¶ÔÊı¾İ½øĞĞËõ·Å²Ù×÷£º¹éÒ»»¯´¦Àí
-5.½»²æÑéÖ¤Ñ¡Ôñ×î¼Ñ²ÎÊıCÓëgamma
-6.ÑµÁ·svmÄ£ĞÍ
-7.²âÊÔÑµÁ·¼¯²¢Ô¤²â²âÊÔ¼¯
+1.ä½¿ç”¨ç‰¹å¾ç®—æ³•æå–æ¯å¼ ç‰¹å¾ç»„æˆæ•°ç»„
+2.ä½¿ç”¨åŒºåˆ†ç®—æ³•ä¸ºå›¾åƒè¿›è¡Œæ·»åŠ åŒºåˆ†æ ‡ç­¾
+3.åˆ†ç¦»è®­ç»ƒé›†ä¸æµ‹è¯•é›†æ•°æ®
+4.å¯¹æ•°æ®è¿›è¡Œç¼©æ”¾æ“ä½œï¼šå½’ä¸€åŒ–å¤„ç†
+5.äº¤å‰éªŒè¯é€‰æ‹©æœ€ä½³å‚æ•°Cä¸gamma
+6.è®­ç»ƒsvmæ¨¡å‹
+7.æµ‹è¯•è®­ç»ƒé›†å¹¶é¢„æµ‹æµ‹è¯•é›†
 
-Ê¹ÓÃ'%{ %} À´Ñ¡ÔñÊ¹ÓÃspam»òÕßmfr'£¬Ä¿Ç°ÊÇMFR
+ä½¿ç”¨'%{ %} æ¥é€‰æ‹©ä½¿ç”¨spamæˆ–è€…mfr'ï¼Œç›®å‰æ˜¯MFR
 
-ËÄ²¿·Ö£º1.SVMÖ÷Ìå 2.SPAMº¯Êı 3.MFRº¯Êı 4.ÂË²¨Çø·Öº¯Êı
+å››éƒ¨åˆ†ï¼š1.SVMä¸»ä½“ 2.SPAMå‡½æ•° 3.MFRå‡½æ•° 4.æ»¤æ³¢åŒºåˆ†å‡½æ•°
 %}
 clc,clear,close all
 divi=1000;
@@ -34,27 +34,27 @@ I=double(imread(imx));
 
 F = MFR(I,10);
 
-%% ¾ØÕóÕûºÏ
+%% çŸ©é˜µæ•´åˆ
 
 matrix=[matrix;F];
 L=med(I);
 label=[label;L];
 end
 
-%% Êı¾İ¼¯²ğ·Ö
+%% æ•°æ®é›†æ‹†åˆ†
 %1.train
 train_matrix=matrix(1:divi,:);
 train_label=label(1:divi,:);
 %2.test
 test_matrix=matrix(divi+1:end,:);
 test_label=label(divi+1:end,:);
-%% ¹éÒ»»¯
+%% å½’ä¸€åŒ–
 [Train_matrix,PS]=mapminmax(train_matrix');
 Train_matrix=Train_matrix';
 Test_matrix=mapminmax('apply',test_matrix',PS);
 Test_matrix=Test_matrix';
 %% 
-%½»²æÑéÖ¤-Íø¸ñ·¨ÕÒc/g
+%äº¤å‰éªŒè¯-ç½‘æ ¼æ³•æ‰¾c/g
 [c,g]=meshgrid(-3:4,-4:4);
 [m,n]=size(c);
 cg=zeros(m,n);
@@ -85,13 +85,13 @@ clc
 model=svmtrain(train_label,Train_matrix,cmd);
 
 %% test-svm
-%1.²é¿´ÑµÁ·Ğ§¹û 2.²é¿´²âÊÔĞ§¹û
+%1.æŸ¥çœ‹è®­ç»ƒæ•ˆæœ 2.æŸ¥çœ‹æµ‹è¯•æ•ˆæœ
 [predict_label_1,accuracy_1,prob_estimate_1]=svmpredict(train_label,Train_matrix,model);
 [predict_label_2,accuracy_2,prob_estimate_2]=svmpredict(test_label,Test_matrix,model);
 result_1=[train_label predict_label_1];
 result_2=[test_label predict_label_2];
 
-%% Í¼Ê¾
+%% å›¾ç¤º
 
 figure
 hold on
@@ -109,34 +109,34 @@ title(string)
 
 function F=spam(I,T)
 
-%% 4¸öË®Æ½/´¹Ö±¾ØÕó+4¸ö¶Ô½Ç¾ØÕó
+%% 4ä¸ªæ°´å¹³/å‚ç›´çŸ©é˜µ+4ä¸ªå¯¹è§’çŸ©é˜µ
 
-%1.Ë®Æ½
+%1.æ°´å¹³
 D = I(:,1:end-1) - I(:,2:end);
 L = D(:,3:end); C = D(:,2:end-1); R = D(:,1:end-2);
-%M11:ÕıÏò£¬M12:ÄæÏò
+%M11:æ­£å‘ï¼ŒM12:é€†å‘
 M11 = ComputerM(L,C,R,T);
 M12 = ComputerM(-R,-C,-L,T);
 
-%2.´¹Ö±
+%2.å‚ç›´
 D = I(1:end-1,:)- I(2:end,:);
 L = D(3:end,:); C = D(2:end-1,:); R = D(1:end-2,:);
 M13 = ComputerM(L,C,R,T);
 M14 = ComputerM(-R,-C,-L,T);
 
-%3.×ó¶Ô½Ç
+%3.å·¦å¯¹è§’
 D = I(1:end-1,1:end-1) - I(2:end,2:end);
 L = D(3:end,3:end); C = D(2:end-1,2:end-1); R = D(1:end-2,1:end-2);
 M21 = ComputerM(L,C,R,T);
 M22 = ComputerM(-R,-C,-L,T);
 
-%4.ÓÒ¶Ô½Ç
+%4.å³å¯¹è§’
 D = I(2:end,1:end-1) - I(1:end-1,2:end);
 L = D(1:end-2,3:end); C = D(2:end-1,2:end-1); R = D(3:end,1:end-2);
 M23 = ComputerM(L,C,R,T);
 M24 = ComputerM(-R,-C,-L,T);
 
-%% Æ½¾ù¾ØÕó+È¡ÌØÕ÷ÏòÁ¿F
+%% å¹³å‡çŸ©é˜µ+å–ç‰¹å¾å‘é‡F
 
 F1 = (M11+M12+M13+M14)/4;
 F2 = (M21+M22+M23+M24)/4;
@@ -145,12 +145,12 @@ end
 
 function M = ComputerM(D1,D2,D3,T)
 
-%È¥³ı±ß½çÍâÔªËØ¡£
+%å»é™¤è¾¹ç•Œå¤–å…ƒç´ ã€‚
 D1(D1<-T)=-T; D1(D1>T)=T;
 D2(D2<-T)=-T; D2(D2>T)=T;
 D3(D3<-T)=-T; D3(D3>T)=T;
 
-%¹éÒ»»¯
+%å½’ä¸€åŒ–
 M = zeros(2*T+1,2*T+1,2*T+1);
 for i=-T:T
     D22 = D2(D1==i);
@@ -170,29 +170,29 @@ end
 
 function fea = MFR( I,order)
   
-  %% 3x3ÖĞÖµÂË²¨Çó²Ğ²î
+  %% 3x3ä¸­å€¼æ»¤æ³¢æ±‚æ®‹å·®
   I_med = medfilt2(I,[3 3],'symmetric');
-  I_mfr = I_med - I; %Çó²Ğ²î
+  I_mfr = I_med - I; %æ±‚æ®‹å·®
   
   %
-  %% Z×Ö×ª»¯Í¼Ïñ 
-  I_mfr_z = I_mfr'; %×ªÖÃ²Ğ²î
-  I_mfr_d = flipud(I_mfr); %µ¹×ª²Ğ²î
-  I_mfr(:,2:2:end) = I_mfr_d(:,2:2:end); %È¡µ¹×ª²Ğ²î2µÄ±¶ÊıÁĞ
-  I_mfr_z_d = flipud(I_mfr_z); %µ¹×ª×ªÖÃ²Ğ²î
-  I_mfr_z(:,2:2:end) = I_mfr_z_d(:,2:2:end); %È¡×ªÖÃµ¹×ª²Ğ²î2µÄ±¶ÊıÁĞ
+  %% Zå­—è½¬åŒ–å›¾åƒ 
+  I_mfr_z = I_mfr'; %è½¬ç½®æ®‹å·®
+  I_mfr_d = flipud(I_mfr); %å€’è½¬æ®‹å·®
+  I_mfr(:,2:2:end) = I_mfr_d(:,2:2:end); %å–å€’è½¬æ®‹å·®2çš„å€æ•°åˆ—
+  I_mfr_z_d = flipud(I_mfr_z); %å€’è½¬è½¬ç½®æ®‹å·®
+  I_mfr_z(:,2:2:end) = I_mfr_z_d(:,2:2:end); %å–è½¬ç½®å€’è½¬æ®‹å·®2çš„å€æ•°åˆ—
   
- %% ÏòÁ¿»¯ 
-  I_mfr3=[I_mfr(:);I_mfr_z(:)]';%ÏòÁ¿»¯Êı¾İ¡£×ªÎª1ĞĞ
+ %% å‘é‡åŒ– 
+  I_mfr3=[I_mfr(:);I_mfr_z(:)]';%å‘é‡åŒ–æ•°æ®ã€‚è½¬ä¸º1è¡Œ
  
   %
-  %I_mfr3=I_mfr(:)';%È¡ÏûZ×Ö·¨
+  %I_mfr3=I_mfr(:)';%å–æ¶ˆZå­—æ³•
   
- %% ¼ÆËãARÏµÊı£¬È¡orderÎ¬ÌØÕ÷
-  aCof = arburg(I_mfr3,order); %×Ô»Ø¹éÄ£ĞÍ
+ %% è®¡ç®—ARç³»æ•°ï¼Œå–orderç»´ç‰¹å¾
+  aCof = arburg(I_mfr3,order); %è‡ªå›å½’æ¨¡å‹
    fea = aCof(2:end);
    
-  %ÒÔÏÂ´úÂëÅĞ¶ÏÌØÕ÷ÖĞÊÇ·ñÓĞNANÊı¾İ£¬Èç¹ûÎªNANÔò½«Æä±äÎª0 
+  %ä»¥ä¸‹ä»£ç åˆ¤æ–­ç‰¹å¾ä¸­æ˜¯å¦æœ‰NANæ•°æ®ï¼Œå¦‚æœä¸ºNANåˆ™å°†å…¶å˜ä¸º0 
   nanflag=isnan(fea);
   if(sum(nanflag)~=0)
        fea=zeros(1,order);
@@ -200,12 +200,12 @@ function fea = MFR( I,order)
 end
 %}
 
-%% ÂË²¨Çø·Ö£ºÓÃÓÚlabel
+%% æ»¤æ³¢åŒºåˆ†ï¼šç”¨äºlabel
 function L=med(img)
 img2=medfilt2(img,[3 3],'symmetric');
 [m,n]=size(img);
 D_H=img2-img;
-h0 = sum(D_H==0)/(n-1);%Ã¿ĞĞË®Æ½²î±ÈÀı
+h0 = sum(D_H==0)/(n-1);%æ¯è¡Œæ°´å¹³å·®æ¯”ä¾‹
 H=h0/(m*n);
 saveF0=sum(H);
   if(saveF0<0.0012)
