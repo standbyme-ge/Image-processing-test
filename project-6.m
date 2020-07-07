@@ -1,9 +1,21 @@
 %%
 %{
-ĞŞ¸Ä
-F=log(abs(fftshift(fft2(I)))) ¸ÄÎªfftshift(fft2(I))¡£
-    µ«ÊÇ¸Ğ¾õÊ¶±ğÂÊÌ«µÍ£¬¾Í¼ÓÁËÈ¡¾ø¶ÔÖµ£¬Ê¶±ğÂÊ´ïµ½90ÒÔÉÏ
-Ê¹ÓÃ¾ØÕóÔËËã´úÌæÁËforÑ­»·¡£
+æœ¬æ¬¡æµ‹è¯•å®ç°çš„æ˜¯ï¼š
+1ï¼‰é€šè¿‡19ç»´ç‰¹å¾å‘é‡å®ç°é‡é‡‡æ ·æ£€æµ‹ã€‚
+    1.å¯¼å…¥ç»è¿‡ä¸åŒé‡é‡‡æ ·ç‡é‡é‡‡æ ·çš„å›¾åƒ
+    2.è¿›è¡Œå¸¦å†…æ ¸Kçš„æ‹‰æ™®æ‹‰æ–¯æ»¤æ³¢å™¨å¤„ç†
+    3.è¿›è¡Œç¦»æ•£å‹å‚…é‡Œå¶å˜æ¢
+    4.è®¾ç½®æˆªæ­¢é¢‘ç‡Wc
+    5.é€šè¿‡ä¸åŒçª—å£å¤§å°æ¥è®¡ç®—å½’ä¸€åŒ–èƒ½é‡å¯†åº¦
+    6.è¾“å‡º19ç»´çš„ç‰¹å¾å˜é‡
+2ï¼‰svmå¤šåˆ†ç±»
+    1.æå–19ç»´ç‰¹å¾
+    2.ç»„æˆæ•°ç»„å’Œå¯¹åº”æ ‡ç­¾
+    3.åˆ†ç¦»è®­ç»ƒé›†ä¸æµ‹è¯•é›†æ•°æ®
+    4.å¯¹æ•°æ®è¿›è¡Œç¼©æ”¾æ“ä½œï¼šå½’ä¸€åŒ–å¤„ç†
+    5.äº¤å‰éªŒè¯é€‰æ‹©æœ€ä½³å‚æ•°Cä¸gamma
+	6.è®­ç»ƒsvmæ¨¡å‹
+    7.æµ‹è¯•è®­ç»ƒé›†å¹¶é¢„æµ‹æµ‹è¯•é›†
 %}
 %%
 clc,clear,close all
@@ -13,7 +25,7 @@ FileList=dir('C:\Users\Administrator\Desktop\research\project-6\resample-ucid\*t
 
 
 matrix=[];
-%Ê¹ÓÃlabel ÖĞµÄ 1=0.6£»2=0.8£»3=1£»4=1.2£»5=1.8
+%ä½¿ç”¨label ä¸­çš„ 1=0.6ï¼›2=0.8ï¼›3=1ï¼›4=1.2ï¼›5=1.8
 label=[1*ones(1,1338),2*ones(1,1338),3*ones(1,1338),4*ones(1,1338),5*ones(1,1338)];
 label=label(:);
 
@@ -21,13 +33,13 @@ for Fi=1:FM
 imx = strcat('C:\Users\Administrator\Desktop\research\project-6\resample-ucid\',FileList(Fi).name);
 I=imread(imx);
 
-%% 19Î¬ÌØÕ÷
+%% 19ç»´ç‰¹å¾
 F=f_19_D(I);
 %%
 matrix=[matrix;F];
 end
 
-%% Êı¾İ¼¯²ğ·Ö
+%% æ•°æ®é›†æ‹†åˆ†
 %1.train
 MA1=matrix(1:1000,:);                 LA1=label(1:1000,:);    %0.6
 MA2=matrix(1338+1:1338+1000,:);       LA2=label(1338+1:1338+1000,:);%0.8
@@ -47,13 +59,13 @@ MB5=matrix(1001+1338*4:1338+1338*4,:); LB5=label(1001+1338*4:1338+1338*4,:);%1.8
 
 test_matrix=[MB1;MB2;MB3;MB4;MB5];
 test_label=[LB1;LB2;LB3;LB4;LB5];
-%% ¹éÒ»»¯
+%% å½’ä¸€åŒ–
 [Train_matrix,PS]=mapminmax(train_matrix');
 Train_matrix=Train_matrix';
 Test_matrix=mapminmax('apply',test_matrix',PS);
 Test_matrix=Test_matrix';
 %% 
-%½»²æÑéÖ¤-Íø¸ñ·¨ÕÒc/g
+%äº¤å‰éªŒè¯-ç½‘æ ¼æ³•æ‰¾c/g
 %{
 [c,g]=meshgrid(-4:4,-4:4);
 [m,n]=size(c);
@@ -86,13 +98,13 @@ cmd=['-t 2 -c 16 -g 1 -h 0 -q'];
 model=svmtrain(train_label,Train_matrix,cmd);
 
 %%test-svm
-%1.²é¿´ÑµÁ·Ğ§¹û 2.²é¿´²âÊÔĞ§¹û
+%1.æŸ¥çœ‹è®­ç»ƒæ•ˆæœ 2.æŸ¥çœ‹æµ‹è¯•æ•ˆæœ
 [predict_label_1,accuracy_1,prob_estimate_1]=svmpredict(train_label,Train_matrix,model);
 [predict_label_2,accuracy_2,prob_estimate_2]=svmpredict(test_label,Test_matrix,model);
 result_1=[train_label predict_label_1];
 result_2=[test_label predict_label_2];
 
-%% Í¼Ê¾
+%% å›¾ç¤º
 %{1
 figure
 hold on
@@ -117,19 +129,20 @@ ylabel('test-category')
 string={'RBF',['accuracy=',num2str(accuracy_2(1)),'%']};
 title(string)
 %}
-%% ÖØ²ÉÑù-19Î¬ÌØÕ÷
 
+
+%% é‡é‡‡æ ·-19ç»´ç‰¹å¾
 
 function En=f_19_D(I)
 k=[-1 -1 -1;-1 8 -1;-1 -1 -1];
 I=filter2(k,I,'same');
-F=abs(fftshift(fft2(I)));%dftÆµÆ×,log(abs())½ö½öÊÇÎªÁËÏÖÊµ£¬¼ÆËãÊ±²»ÓÃ
+F=abs(fftshift(fft2(I)));%dfté¢‘è°±,log(abs())ä»…ä»…æ˜¯ä¸ºäº†ç°å®ï¼Œè®¡ç®—æ—¶ä¸ç”¨
 [M,~]=size(F);
 Wc=fix(M/2);
 s=0.05:0.05:0.95;
 En=zeros(1,19);
 Fsquare=F.^2;
-Ed_wc=sum(Fsquare(:));%Çó×ÜµÄÄÜÁ¿
+Ed_wc=sum(Fsquare(:));%æ±‚æ€»çš„èƒ½é‡
 for i=1:19
     Ed_w=ED(F,Wc,fix(Wc*s(i)));
     En(i)=(1/(s(i)*s(i)))*Ed_w/Ed_wc;
