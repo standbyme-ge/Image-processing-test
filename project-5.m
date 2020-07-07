@@ -1,3 +1,43 @@
+%% 先进行中值滤波，并对中值滤波和原图进行JEPG压缩。
+clc,clear;
+
+%1.加载
+FileList= dir('C:\Users\Administrator\Desktop\research\project-5\ucid_gray_tif\*tif');
+[FM,FN] = size(FileList);
+%2.循环体
+for Fi=1:FM
+imx = strcat('C:\Users\Administrator\Desktop\research\project-5\ucid_gray_tif\',FileList(Fi).name);
+
+f=double(imread(imx));
+T=dctmtx(8);
+dct=@(block_struct)T*block_struct.data*T';
+invdct=@(block_struct)T'*block_struct.data*T;
+f_tf=blockproc(f,[8,8],dct);
+qt_mtx=[16,11,10,16,24,40,51,61;...
+12,12,14,19,26,58,60,55;...
+14,13,16,24,40,57,69,56;...
+14,17,22,29,51,87,80,62;...
+18,22,37,56,68,109,103,77;...
+24,35,55,64,81,104,113,92;...
+49,64,78,87,103,121,120,101;...
+72,92,95,98,112,100,103,99];
+% quantization
+f_qt=blockproc(f_tf,[8,8],@(block_struct)block_struct.data./qt_mtx);
+f_qt=round(f_qt);
+% restore the image
+g=blockproc(f_qt,[8,8],@(block_struct)block_struct.data.*qt_mtx);
+g=blockproc(g,[8,8],invdct);
+%f=uint8(f);
+g=uint8(g);
+%imshow(f),title('original image');
+%figure;
+%imshow(g),title('compressed image');
+%imwrite(g,'compressed_img.jpg');
+imwrite(g,strcat('JPEG-',FileList(Fi).name)); %修改图名-47
+end
+
+
+
 %{
 
 1.使用特征算法提取每张特征组成数组
@@ -200,18 +240,4 @@ function fea = MFR( I,order)
 end
 %}
 
-%% 滤波区分：用于label
-function L=med(img)
-img2=medfilt2(img,[3 3],'symmetric');
-[m,n]=size(img);
-D_H=img2-img;
-h0 = sum(D_H==0)/(n-1);%每行水平差比例
-H=h0/(m*n);
-saveF0=sum(H);
-  if(saveF0<0.0012)
-      L=1;
-  else
-      L=-1;
-  end
-end
 
