@@ -51,8 +51,9 @@
 ```
 
 ```
+项目6：
  1. Detail understanding of 'Demosaicing',
-     2. Distinguish PIM and CG images by implementing 'Image Authentication by Detecting Traces of Demosaicing'.
+ 2. Distinguish PIM and CG images by implementing 'Image Authentication by Detecting Traces of Demosaicing'.
      About the database: for PIM images, you can take pics with your mobile phone or camera. For CG images, you can download images from the urls in 'Identification of natural images and computer generated graphics based on statistical and textural features'
       Please submit the results, as well as your understanding of 'Demosaicing' in 36 hours.
 ```
