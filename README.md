@@ -51,8 +51,8 @@
 ```
 
 ```
-1详细了解“脱模”，
-2通过实现“通过检测脱色痕迹进行图像认证”来区分PIM和CG图像。
-关于数据库：对于PIM图像，您可以用手机或相机拍照。你可以下载基于计算机图形学和自然图像特征的计算机图像和纹理识别.
-请在36小时内提交结果，以及您对“脱模”的理解。
+ 1. Detail understanding of 'Demosaicing',
+     2. Distinguish PIM and CG images by implementing 'Image Authentication by Detecting Traces of Demosaicing'.
+     About the database: for PIM images, you can take pics with your mobile phone or camera. For CG images, you can download images from the urls in 'Identification of natural images and computer generated graphics based on statistical and textural features'
+      Please submit the results, as well as your understanding of 'Demosaicing' in 36 hours.
 ```
