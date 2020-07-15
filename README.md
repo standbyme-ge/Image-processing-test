@@ -51,9 +51,16 @@
 ```
 
 ```
-项目6：
+项目7：
  1. Detail understanding of 'Demosaicing',
  2. Distinguish PIM and CG images by implementing 'Image Authentication by Detecting Traces of Demosaicing'.
      About the database: for PIM images, you can take pics with your mobile phone or camera. For CG images, you can download images from the urls in 'Identification of natural images and computer generated graphics based on statistical and textural features'
       Please submit the results, as well as your understanding of 'Demosaicing' in 36 hours.
+```
+```
+项目8:
+ 这一周的任务是实现‘Synthesis of Color Filter Array Pattern in Digital Images’里的方法。目标和以往不同，我们这次不是要检测CFA的痕迹，而是要伪造CFA痕迹。
+     1）用论文中的方法，对上次任务中收集的 CG 图片（没有CFA痕迹）进行CFA伪造，保存成未压缩格式(tif 或png)，使得我们上次的算法将其判断为PIM images。
+     2）将自己对算法的理解和实现过程形成类似2009_SPIE_slides.pdf一样的文档。
+     从这次任务开始，希望你能把大部分时间放在写作，而不是写代码上，这才是我们研究生的培养目标。
 ```
