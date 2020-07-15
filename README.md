@@ -8,7 +8,7 @@
 2）用第一问的算法来定位拼接图片的篡改区域。
 可以用任何一种语言来实现，要有算法的解释
 ```
-[On detection of Median Filtering in Digital Images.pdf] (https://github.com/standbyme-ge/Image-processing-test/blob/master/PaperList/On%20detection%20of%20Median%20Filtering%20in%20Digital%20Images.pdf)
+[On detection of Median Filtering in Digital Images.pdf](https://github.com/standbyme-ge/Image-processing-test/blob/master/PaperList/On%20detection%20of%20Median%20Filtering%20in%20Digital%20Images.pdf)
 
 ```
 项目2：
