@@ -8,7 +8,7 @@
 2）用第一问的算法来定位拼接图片的篡改区域。
 可以用任何一种语言来实现，要有算法的解释
 ```
-[On detection of Median Filtering in Digital Images.pdf](https://github.com/standbyme-ge/Image-processing-test/blob/master/PaperList/On%20detection%20of%20Median%20Filtering%20in%20Digital%20Images.pdf)
+paper:[On detection of Median Filtering in Digital Images.pdf](https://github.com/standbyme-ge/Image-processing-test/blob/master/PaperList/On%20detection%20of%20Median%20Filtering%20in%20Digital%20Images.pdf)
 
 ```
 项目2：
@@ -17,6 +17,7 @@
 2)执行附件第3节的取证算法，区分原始图像和增强图像。祝你好运。
 
 ```
+paper:[stamm2008_BLINDFORENSICSOFCONTRASTENHANCEMENTINDIGITALIMAGES.pdf](https://github.com/standbyme-ge/Image-processing-test/blob/master/PaperList/stamm2008_BLINDFORENSICSOFCONTRASTENHANCEMENTINDIGITALIMAGES.pdf)
 ```
 项目3:
 附件是重采样检测的先驱工作。尝试尽可能多地实现它，并找出在附加数据集中对哪些图像进行了重新采样(50幅原始图像和50幅重新采样)。
