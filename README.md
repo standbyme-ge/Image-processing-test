@@ -76,3 +76,10 @@ paper 7-1:[2015JFS_Pengfei_Identification of natural images and computer generat
 ```
 paper 8-1:[2009_SPIE_slides.pdf](https://github.com/standbyme-ge/Image-processing-test/blob/master/PaperList/2009_SPIE_slides.pdf)
       8-2:[2009_SPIE_Synthesis of Color Filter Array Pattern in Digital Images.pdf](https://github.com/standbyme-ge/Image-processing-test/blob/master/PaperList/2009_SPIE_Synthesis%20of%20Color%20Filter%20Array%20Pattern%20in%20Digital%20Images.pdf)
+```
+项目9：
+这一次的任务是利用附件‘2006TIFS_Lukáˇs_digital camara identification from SPN’里的方法来检测相片所对应的相机。
+     1）准备三部相机(或手机)的各50张照片，相信已经完成；
+     2）按照论文修改我给你的代码。注意：想要运行代码，你需要学习将Filter文件夹中c++代码编译成Matlab可以调用的mex文件 （如果你电脑是windows64，则应该是mexw64文件）
+     3）每部相机用20张照片生成相机指纹，30张测试。你有3部相机，应该要做3*3*30次实验。
+```
