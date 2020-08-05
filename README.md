@@ -83,7 +83,7 @@ paper 8-1:[2009_SPIE_slides.pdf](https://github.com/standbyme-ge/Image-processin
      2）按照论文修改我给你的代码。注意：想要运行代码，你需要学习将Filter文件夹中c++代码编译成Matlab可以调用的mex文件 （如果你电脑是windows64，则应该是mexw64文件）
      3）每部相机用20张照片生成相机指纹，30张测试。你有3部相机，应该要做3*3*30次实验。
 ```
-paper 9:[https://github.com/standbyme-ge/Image-processing-test/blob/master/PaperList/2006TIFS_Luk%C3%A1%CB%87s_digital%20camara%20identification%20from%20SPN.PDF](2006TIFS_Lukáˇs_digital camara identification from SPN)
+paper 9:[2006TIFS_Lukáˇs_digital camara identification from SPN](https://github.com/standbyme-ge/Image-processing-test/blob/master/PaperList/2006TIFS_Luk%C3%A1%CB%87s_digital%20camara%20identification%20from%20SPN.PDF)
 ```
 项目10：
 这一次的任务是利用附件‘2008TIFS_Chen_Determining Image Origin and Integrity UsingSensorNoise'里的方法来定位图像篡改。
@@ -93,5 +93,5 @@ paper 9:[https://github.com/standbyme-ge/Image-processing-test/blob/master/Paper
      theta = inv(features'*features)*features'*target;
      为了定位效果比较好，篡改时的原图建议选择光线较好，内容相对平坦的图片.如果提取(23)中的15维特征有困难，参考这个函数extractPatchFeatures.m
 ```
-paper 10:[https://github.com/standbyme-ge/Image-processing-test/blob/master/PaperList/2008TIFS_Chen_Determining%20Image%20Origin%20and%20Integrity%20UsingSensorNoise.pdf](2008TIFS_Chen_Determining Image Origin and Integrity UsingSensorNoise)
+paper 10:[2008TIFS_Chen_Determining Image Origin and Integrity UsingSensorNoise](https://github.com/standbyme-ge/Image-processing-test/blob/master/PaperList/2008TIFS_Chen_Determining%20Image%20Origin%20and%20Integrity%20UsingSensorNoise.pdf)
 ```
