@@ -95,3 +95,11 @@ paper 9:[2006TIFS_Lukáˇs_digital camara identification from SPN](https://githu
 ```
 paper 10:[2008TIFS_Chen_Determining Image Origin and Integrity UsingSensorNoise](https://github.com/standbyme-ge/Image-processing-test/blob/master/PaperList/2008TIFS_Chen_Determining%20Image%20Origin%20and%20Integrity%20UsingSensorNoise.pdf)
 ```
+```
+paper 11:[2015ICCV_Chen_An_Efficient_Statistical_method_for_NLE_yang.pdf](https://github.com/standbyme-ge/Image-processing-test/blob/master/PaperList/2015ICCV_Chen_An_Efficient_Statistical_method_for_NLE_yang.pdf)
+```
+```
+Task 11:
+       1）实现代码中的算法，
+       2）思考如何把噪声水平估计用到拼接定位中来，自己假设一个案例，并用此方法来进行定位。
+```
